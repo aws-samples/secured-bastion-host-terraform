@@ -3,6 +3,7 @@
 
 module "vpc" {
   source     = "terraform-aws-modules/vpc/aws"
+  version    = "~> 4.0"
   create_vpc = true
 
   name = "bastion-host-vpc"
@@ -17,7 +18,7 @@ module "vpc" {
   enable_dns_hostnames = var.vpc_enable_dns_hostnames
 
   flow_log_file_format = "parquet"
-  tags                 = {
+  tags = {
     Name = "${var.tag_application}-${var.target_environment}-bastion-host"
   }
 }
